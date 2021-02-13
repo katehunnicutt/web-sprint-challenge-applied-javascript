@@ -1,11 +1,11 @@
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
-  // Implement this function which takes an array of strings ("topics") as its only argument.
-  // As an example, if the topics passed are ['javascript', 'bootstrap', 'technology']
-  // then the function returns the markup below.
-  // The tags used, the hierarchy of elements and their attributes must match the provided markup!
-  // The text inside elements will be set using their `textContent` property (NOT `innerText`).
+  // Implement this function which takes an array of strings ("topics") as its only argument. X
+  // As an example, if the topics passed are ['javascript', 'bootstrap', 'technology'] X
+  // then the function returns the markup below. X
+  // The tags used, the hierarchy of elements and their attributes must match the provided markup! X
+  // The text inside elements will be set using their `textContent` property (NOT `innerText`). X
   //
   // <div class="topics">
   //   <div class="tab">javascript</div>
@@ -13,6 +13,27 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+
+  const topicsVar = document.createElement('div')
+  const javascriptVar = document.createElement('div')
+  const bootstrapVar = document.createElement('div')
+  const technologyVar = document.createElement('div')
+
+  topicsVar.classList.add('topics')
+  javascriptVar.classList.add('javascript')
+  bootstrapVar.classList.add('bootstrap')
+  technologyVar.classList.add('technology')
+
+  javascriptVar.textContent = 'javascript'
+  bootstrapVar.textContent = 'bootstrap'
+  technologyVar.textContent = 'technology'
+
+  topicsVar.appendChild(javascriptVar)
+  topicsVar.appendChild(bootstrapVar)
+  topicsVar.appendChild(technologyVar)
+
+return topicsVar
+  
 }
 
 const tabsAppender = (selector) => {

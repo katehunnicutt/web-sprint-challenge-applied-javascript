@@ -1,23 +1,55 @@
 const Card = (article) => {
   // TASK 5
   // ---------------------
-  // Implement this function, which should return the markup you see below.
-  // It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties.
-  // The tags used, the hierarchy of elements and their attributes must match the provided markup exactly!
-  // The text inside elements will be set using their `textContent` property (NOT `innerText`).
-  // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
+  // Implement this function, which should return the markup you see below. X
+  // It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties. X
+  // The tags used, the hierarchy of elements and their attributes must match the provided markup exactly!  X
+  // The text inside elements will be set using their `textContent` property (NOT `innerText`). X
+  // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console. X
   //
   // <div class="card">
   //   <div class="headline">{ headline }</div>
   //   <div class="author">
-  //     <div class="img-container">
+  //     <div class="img-container"> 
   //       <img src={ authorPhoto }>
   //     </div>
   //     <span>By { authorName }</span>
   //   </div>
   // </div>
   //
+
+  const cardVar = document.createElement('div')
+  const headlineVar = document.createElement('div')
+  const authorVar = document.createElement('div')
+  const imgContainerVar = document.createElement('div')
+  const photoVar = document.createElement('img')
+  const authorNameVar = document.createElement('span')
+
+  cardVar.classList.add('card')
+  headlineVar.classList.add('headline')
+  authorVar.classList.add('author')
+  imgContainerVar.classList.add('img-container')
+  
+  photoVar.src = article
+  //authorNameVar.classList.add()
+
+  headlineVar.textContent = `${ headline }`
+  authorNameVar.textContent = `${ authorName }`
+
+  cardVar.appendChild(headlineVar)
+  cardVar.appendChild(authorVar)
+  authorVar.appendChild(imgContainerVar)
+  authorVar.appendChild(authorNameVar)
+  imgContainerVar.appendChild(photoVar)
+
+  cardVar.addEventListener('click', event => {
+    event.stopPropagation()
+    return headlineVar
+  });
+
+return cardVar
 }
+
 
 const cardAppender = (selector) => {
   // TASK 6
