@@ -81,6 +81,6 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 3. What is an event listener?
     Event listeners are methods used to attach to objects within javascript and tie the events to them. They take two arguments including a callback. This allows us to manipulate the intended target object to any degree we wish as it is now attached to the event listener.
 4. Why would we convert a NodeList into an Array?
-
+    A NodeList is was gets returned from querySelectorAll and while it may look like an array it doesn't behave like one. a node list does not have asscess to the methods that arrays do and therefore not as easy to work with and manipulate. There are many times where it would be beneficial to convert the NodeList over in order to gai access to these methods. 
 5. What is a component?
     Components are a multi part item that combines javascript, html, and css. They are designed to be easily reused and moved around in such a way that javascript can universally run through them while specific css styling can be added to certian parts.
