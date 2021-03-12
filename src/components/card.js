@@ -46,7 +46,7 @@ const Card = (article) => {
   photoVar.src = `${article.authorPhoto}`
   authorNameVar.textContent = `${article.authorName}`
 
-  cardVar.addEventListener("click", console.log(headlineVar))
+  cardVar.addEventListener("click", evt => { console.log(`${article.headline}`)})
 
 return cardVar
 }
