@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -18,34 +20,33 @@ const Card = (article) => {
   // </div>
   //
 
-  const cardVar = document.createElement('div')
-  const headlineVar = document.createElement('div')
-  const authorVar = document.createElement('div')
-  const imgContainerVar = document.createElement('div')
-  const photoVar = document.createElement('img')
-  const authorNameVar = document.createElement('span')
+  //declaring elements
+  const cardVar = document.createElement("div")
+  const headlineVar = document.createElement("div")
+  const authorVar = document.createElement("div")
+  const imgContainerVar = document.createElement("div")
+  const photoVar = document.createElement("img")
+  const authorNameVar = document.createElement("span")
 
-  cardVar.classList.add('card')
-  headlineVar.classList.add('headline')
-  authorVar.classList.add('author')
-  imgContainerVar.classList.add('img-container')
-  
-  photoVar.src = article
-  //authorNameVar.classList.add()
+  //tree structuring
+  cardVar.appendChild(headlineVar);
+  cardVar.appendChild(authorVar);
+  authorVar.appendChild(imgContainerVar);
+  imgContainerVar.appendChild(photoVar);
+  authorVar.appendChild(authorNameVar);
 
-  headlineVar.textContent = `${ headline }`
-  authorNameVar.textContent = `${ authorName }`
+  //class names
+  cardVar.classList.add("card");
+  headlineVar.classList.add("headline");
+  authorVar.classList.add("author");
+  imgContainerVar.classList.add("img-container");
 
-  cardVar.appendChild(headlineVar)
-  cardVar.appendChild(authorVar)
-  authorVar.appendChild(imgContainerVar)
-  authorVar.appendChild(authorNameVar)
-  imgContainerVar.appendChild(photoVar)
+  //text content
+  headlineVar.textContent = `${article.headline}`
+  photoVar.src = `${article.authorPhoto}`
+  authorNameVar.textContent = `${article.authorName}`
 
-  cardVar.addEventListener('click', event => {
-    event.stopPropagation()
-    return headlineVar
-  });
+  cardVar.addEventListener("click", console.log(headlineVar))
 
 return cardVar
 }
@@ -60,6 +61,30 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-}
+  //
+const cardContainer = document.querySelector(selector)
+
+  axios
+  .get("https://lambda-times-api.herokuapp.com/articles")
+  .then((res) => {
+    //dot notation to right api
+    const cardArray = res.data.articles
+    const cards = (Object.keys(cardArray))
+    console.log(cards)
+    cards.forEach((cardStuff) => {
+      cardArray[cardStuff].forEach(card => {
+        cardContainer.appendChild(Card(card))
+      })
+
+    })   
+    })
+  .catch((err) => {
+    console.log(err)
+  })
+
+};
+
+
+
 
 export { Card, cardAppender }
